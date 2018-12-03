@@ -5,6 +5,13 @@
 *::before{
     box-sizing: border-box;
 }
+body,html{
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+}
 .container{
     display: flex;
     height: 100vh;
@@ -24,4 +31,26 @@
     overflow: scroll;
     height: 100%;
     font-size: 16px;
+}
+
+
+.button-wrapper{
+    position: fixed;
+    top: 50px;
+    right: 30px;
+    width: 30px;
+
+}
+
+button { 
+    cursor: pointer; 
+    outline:none;
+    -webkit-appearance: none; 
+    -webkit-tap-highlight-color: rgba(255,0,0,0);
+    margin-bottom: 30px;
+    padding: 5px;
+}
+
+button.active{
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.8);
 }

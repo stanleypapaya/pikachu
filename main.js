@@ -144,20 +144,32 @@
     
 }  
     `
-    function writeCode(Prefix, Code, fn){
+    var duration = 10
+    $('button').on('click', function(e){
+        let $button = $(e.currentTarget)
+        let speed = $button.attr('data-speed')
+        $button.addClass('active').siblings('.active').removeClass('active')
+        if( speed === 'fast'){
+            duration = 2
+        } else if (speed === 'medium'){
+            duration = 10
+        } else if (speed === 'slow'){
+            duration = 50
+        }
+    })
+    function writeCode(Prefix, Code, Fn){
         let container = document.querySelector('#code')
         let styleTag = document.querySelector('#styleTag')
         let n = 0
-        let id = setInterval(() => {
+        let id = setTimeout(function fn(){
             n += 1
             container.innerHTML = code.substring(0, n)
             styleTag.innerHTML = code.substring(0, n)
             container.scrollTop = container.scrollHeight
-            if(n >= code.length){
-                window.clearInterval(id)
-                fn && fn.call()
+            if(n < code.length){
+                setTimeout(fn, duration)
             }
-        },10)
+        },duration)
     }
     writeCode('', code)
 }.call()
